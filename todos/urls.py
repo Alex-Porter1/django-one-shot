@@ -3,10 +3,12 @@ from django.urls import path
 from todos.views import (
     TodoListCreateView,
     TodoListListView,
-    TodoListDetailView
+    TodoListDetailView,
+    TodoListUpdateView,
 )
 urlpatterns = [
     path("", TodoListListView.as_view(), name="list_todos"),
     path("<int:pk>/", TodoListDetailView.as_view(), name="show_todolist"),
     path("create/", TodoListCreateView.as_view(), name="create_todolist"),
+    path("<int:pk>/edit/", TodoListUpdateView.as_view(), name="update_todolist"),
 ]
