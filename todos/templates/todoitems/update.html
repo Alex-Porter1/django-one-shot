@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <main>
+            <div>
+                <h1>Update Item</h1>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button>Update</button>
+                </form>
+            </div>
+        </main>
+    </body>
+</html>
