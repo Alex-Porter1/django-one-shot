@@ -4,7 +4,7 @@ from django.views.generic.detail import DetailView
 # Create your views here.
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 
 
@@ -35,3 +35,9 @@ class TodoListUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse_lazy("show_todolist", args=[self.object.id])
+
+
+class TodoListDeleteView(DeleteView):
+    model = TodoList
+    template_name = "todos/delete.html"
+    success_url = reverse_lazy("list_todos")
