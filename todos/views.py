@@ -4,6 +4,8 @@ from django.views.generic.detail import DetailView
 # Create your views here.
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView
+from django.views.generic.detail import DetailView
 
 
 class TodoListListView(ListView):
@@ -15,3 +17,12 @@ class TodoListListView(ListView):
 class TodoListDetailView(DetailView):
     model = TodoList
     template_name = "todos/detail.html"
+
+
+class TodoListCreateView(CreateView):
+    model = TodoList
+    template_name = "todos/create.html"
+    fields = ["name"]
+
+    def get_success_url(self):
+        return reverse_lazy("show_todolist", args=[self.object.id])
